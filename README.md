@@ -37,102 +37,58 @@
 
 ---
  
-staff (
-
- staff_id primary_key,
-
- FName VARCHAR(50) ,
- 
- LName VARCHAR(50) ,
- 
- Patronymic varchar(50),
-
- divisions_id varchar(50),
- 
- Structura_id varchar(50),
- 
- date_off_id datetime,
- 
- position_id varchar(50),
- 
- salary_id numeric,
- 
- address_id VARCHAR(50),
- 
- project_id VARCHAR(50),
- 
+Проекты_имена (
+- идентификатор, первичный ключ, SERIAL
+- имя проекта VARCHAR(150)
 )
 
-salary (
-
-salary_id primary_key
-
-pay numeric
-
+Филиалы_адреса (
+- идентификатор, первичный ключ, SERIAL
+- область_id, внешний ключ, INTEGER
+- город_id, внешний ключ, INTEGER
+- адрес филиала, VARCHAR(350)
 )
 
-position (
-
-position_id primary_key
-
-spethion_type
-
+Области (
+- идентификатор, первичный ключ, SERIAL
+- имя района, VARCHAR(50)
 )
 
-divisions (
-
-divisions_id primary_key
-
-department varchar(50)
-
-Unit Group varchar(50)
-
-Unit Group_type
-
-department_type
-
+Города (
+- идентификатор, первичный ключ, SERIAL
+- имя города, VARCHAR(50)
 )
 
-Structura (
-
-Structura_id primary_key
-
-Group varchar(50)
-
-Structura_type 
-
-Structura_title
-
+Подразделения_имена (
+- идентификатор, первичный ключ, SERIAL
+- имя подразделения, VARCHAR(150)
+- тип_подразделения_id, внешний ключ, INTEGER
 )
 
-
-date_off_Employee )
-
-date_off_id primary_key
-
-date datetime
-
-(
-
-
-branch address (
-
-address_id primary_key
-
-edge VARCHAR(50)
-
-city VARCHAR(50)
-
-street VARCHAR(50)
-
-house VARCHAR(50)
-
+Подразделения_типы (
+- идентификатор, первичный ключ, SERIAL
+- тип подразделения, VARCHAR(50)
 )
 
-project (
-
-project_id primary_key
-
-project_type
-
+Должности (
+- идентификатор, первичный ключ, SERIAL
+- должность, VARCHAR(50)
 )
+
+Сотрудники (
+- идентификатор, первичный ключ, SERIAL
+- ФИО, VARCHAR(150)
+- дата найма, DATA
+- оклад, MONEY
+- должность_id, внешний ключ, INTEGER
+- подразделение_id, внешний ключ, INTEGER
+- филиал_id, внешний ключ, INTEGER
+)
+
+Проекты (
+- идентификатор, первичный ключ, SERIAL
+- проект_id, внешний ключ, INTEGER
+- сотрудник_id, внешний ключ, INTEGER
+)
+
+---
